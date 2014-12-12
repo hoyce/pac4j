@@ -39,10 +39,9 @@ public class OrcidApi20 extends DefaultApi20 {
 
     @Override
     public String getAuthorizationUrl(OAuthConfig oAuthConfig) {
-        // #show_login skips showing the registration form, which is only
-        // cluttersome.
-        return String.format(AUTH_URL + "?client_id=%s&scope=%s&response_type=%s&redirect_uri=%s#show_login",
-            oAuthConfig.getApiKey(), OAuthEncoder.encode(oAuthConfig.getScope()), "code", OAuthEncoder.encode(oAuthConfig.getCallback()));
+      // show_login skips showing the registration form, which is only cluttersome.
+      return String.format(AUTH_URL + "?client_id=%s&scope=%s&response_type=%s&redirect_uri=%s&show_login=%s",
+        oAuthConfig.getApiKey(), OAuthEncoder.encode(oAuthConfig.getScope()), "code", OAuthEncoder.encode(oAuthConfig.getCallback()), "true");
     }
 
     @Override
